@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Cities</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="center-align">
+            City list
+        </h1>
+        <input id="filter-input" type="text" placeholder="Wyszukaj miasta">
+        <ul id="app-list" class="collection with-header">
+            <li class="collection-header">
+                <h3>A</h3>
+            </li>
+            <li class="collection-item">
+                <a href="#">Augustów</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Annopol</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Andrychów</a>
+            </li>
+            <li class="collection-header">
+                <h3>B</h3>
+            </li>
+            <li class="collection-item">
+                <a href="#">Bydgoszcz</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Białystok</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Bełchatów</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Białobrzegi</a>
+            </li>
+            <li class="collection-header">
+                    <h3>C</h3>
+                </li>
+                <li class="collection-item">
+                    <a href="#">Chełm</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#">Chorzów</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#">Cieszyn</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#">Częstochowa</a>
+                </li>
+    </div>
+    <script>
+        let filterInput = document.getElementById('filter-input');
+        filterInput.addEventListener('keyup', filterNames);
+
+        function filterNames(){
+            let filterValue = document.getElementById('filter-input').value.toUpperCase();
+            
+            let appList = document.getElementById('app-list');
+            let appListItems = appList.querySelectorAll('li.collection-item');
+            
+            for(let i = 0; i < appListItems.length; i++){
+                let link = appListItems[i].getElementsByTagName('a')[0];
+                if(link.innerHTML.toUpperCase().indexOf(filterValue) > -1){
+                    appListItems[i].style.display = '';
+                } else {
+                    appListItems[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
